@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+п»їusing System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI planetNameText;
     public TextMeshProUGUI planetUnlockCostText;
     public TextMeshProUGUI upgradeCostText;
+    public TextMeshProUGUI autoMinerText; // вњ… Р”РѕР±Р°РІР»РµРЅРѕ: С‚РµРєСЃС‚ AutoMiner
 
     [Header("Game Values")]
     public float totalResources = 0f;
@@ -25,7 +26,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        // Начальная планета должна быть разблокирована
+        // РќР°С‡Р°Р»СЊРЅР°СЏ РїР»Р°РЅРµС‚Р° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ СЂР°Р·Р±Р»РѕРєРёСЂРѕРІР°РЅР°
         if (planets.Count > 0)
         {
             planets[0].isUnlocked = true;
@@ -84,38 +85,39 @@ public class GameController : MonoBehaviour
                 nextPlanet.isUnlocked = true;
                 currentPlanetIndex++;
                 UpdateUI();
-                Debug.Log($"Планета {nextPlanet.name} разблокирована!");
+                Debug.Log($"РџР»Р°РЅРµС‚Р° {nextPlanet.name} СЂР°Р·Р±Р»РѕРєРёСЂРѕРІР°РЅР°!");
             }
             else
             {
-                Debug.Log("Недостаточно ресурсов для разблокировки планеты или она уже разблокирована.");
+                Debug.Log("РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЂРµСЃСѓСЂСЃРѕРІ РґР»СЏ СЂР°Р·Р±Р»РѕРєРёСЂРѕРІРєРё РїР»Р°РЅРµС‚С‹ РёР»Рё РѕРЅР° СѓР¶Рµ СЂР°Р·Р±Р»РѕРєРёСЂРѕРІР°РЅР°.");
             }
         }
         else
         {
-            Debug.Log("Все планеты уже разблокированы.");
+            Debug.Log("Р’СЃРµ РїР»Р°РЅРµС‚С‹ СѓР¶Рµ СЂР°Р·Р±Р»РѕРєРёСЂРѕРІР°РЅС‹.");
         }
         FindObjectOfType<PlanetSelector>().GeneratePlanetButtons();
     }
 
     public void UpdateUI()
     {
-        resourceText.text = $"Ресурсы: {totalResources:F1}";
+        resourceText.text = $"Resources: {totalResources:F1}";
 
         if (currentPlanetIndex < planets.Count)
         {
-            planetNameText.text = $"Планета: {planets[currentPlanetIndex].name}";
+            planetNameText.text = $"Current Planet: {planets[currentPlanetIndex].name}";
         }
 
         if (currentPlanetIndex + 1 < planets.Count)
         {
-            planetUnlockCostText.text = $"Разблокировать: {planets[currentPlanetIndex + 1].unlockCost:F1}";
+            planetUnlockCostText.text = $"Unlock next planet: {planets[currentPlanetIndex + 1].unlockCost:F1}";
         }
         else
         {
-            planetUnlockCostText.text = "Все планеты разблокированы!";
+            planetUnlockCostText.text = "Р’СЃРµ РїР»Р°РЅРµС‚С‹ СЂР°Р·Р±Р»РѕРєРёСЂРѕРІР°РЅС‹!";
         }
 
-        upgradeCostText.text = $"Улучшить клик: {clickUpgradeCost:F1}";
+        upgradeCostText.text = $"Upgrade Click: {clickUpgradeCost:F1}";
+        autoMinerText.text = $"Buy AutoMiner: {autoMinerCost:F1}"; // вњ… РћС‚РѕР±СЂР°Р¶РµРЅРёРµ СЃС‚РѕРёРјРѕСЃС‚Рё AutoMiner
     }
 }

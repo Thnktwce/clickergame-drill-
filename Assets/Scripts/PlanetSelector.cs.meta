@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 4b1e12da9af0e784eaf8cca0a96bc4a6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - gameController: {instanceID: 0}
+  - planetButtonPrefab: {fileID: 6574368078937219765, guid: 6971eccf282e3af4fa0631c759c9a86d, type: 3}
+  - buttonContainer: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
